@@ -4,8 +4,8 @@
 
 <h1>Starshop! Your ideal place in the galaxy for finding starship parts!</h1>
     <div>
-        Browse all {{ starshipCount }} parts!
-        {% if starshipCount > 400 %}
+        Browse all {{ ships|length }} parts!
+        {% if ships|length > 400 %}
         <p>That's a lot of parts...</p>
         {% endif %}
     </div>
@@ -13,7 +13,11 @@
         <table>
             <tr>
                 <th>Name</th>
-                <td>{{ myShip.name }}</td>
+                <td>
+                    <a href="{{ path('app_starship_show', {
+                        id: myShip.id
+                    }) }}">{{ myShip.name }}</a>
+                </td>
             </tr>
             <tr>
                 <th>Class</th>
